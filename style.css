@@ -292,10 +292,14 @@ nav{
 
 .portfolio{
   display:grid;
-  grid-template-columns: repeat(auto-fit,minmax(350px,auto));
+  grid-template-columns: repeat(auto-fit,minmax(45%,auto));
   align-items: center;
-  gap: 2.5rem;
+  gap: 2rem;
   margin-top: 5rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  max-width: 1200px;
+  
 }
 .projectrow{
   position: relative;
@@ -307,14 +311,15 @@ nav{
 .projectrow img{
   width: 100%;
   border-radius: 8px;
-  display: block;
   transition: transform 0.5s;
+  border: 3px solid rgb(68, 161, 122);
 }
+
 
 .layer{
   width: 100%;
   height: 0;
-  background: linear-gradient(rgba(155, 154, 154, 0.1), #0b3d58);
+  background: linear-gradient(rgba(0, 3, 34, 0.68), #03263a);
   position: absolute;
   border-radius: 8px;
   left:0;
@@ -328,13 +333,17 @@ nav{
 }
 
 .layer h5{
-  font: 20px;
+  font-size: 2rem;
   font-weight: 600;
   margin-bottom: 15px;
+  color: #09edcb;
 }
 
+.layer h5:hover{
+  text-decoration: underline;
+}
 .layer p{
-  color:rgb(107, 213, 237);
+  color:rgb(73, 244, 173);
   font-size: 1rem;
   line-height: 1.8;
 }
