@@ -1,0 +1,164 @@
+.education-section {
+  padding: 100px 0;
+  background: var(--bg-primary);
+  position: relative;
+}
+
+.education-container {
+  max-width: 900px;
+  margin: 60px auto 0;
+}
+
+.education-card {
+  background: var(--glass);
+  backdrop-filter: blur(20px);
+  padding: 3rem;
+  border-radius: 30px;
+  border: 1px solid var(--border);
+  transition: all 0.5s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.education-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  transform: translateY(-5px);
+}
+
+.education-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: var(--accent);
+  opacity: 0.8;
+}
+
+.edu-card-header {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  margin-bottom: 2.5rem;
+}
+
+.edu-icon-box {
+  width: 70px;
+  height: 70px;
+  background: rgba(255, 78, 80, 0.1);
+  color: var(--accent);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 10px 20px rgba(255, 78, 80, 0.1);
+}
+
+.edu-header-text h3 {
+  font-size: 1.8rem;
+  color: white;
+  font-weight: 800;
+  margin-bottom: 0.8rem;
+  line-height: 1.2;
+}
+
+.edu-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.uni-name {
+  font-size: 1.2rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.meta-row {
+  display: flex;
+  gap: 2rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.meta-row span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.edu-content p {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  font-size: 1.1rem;
+  margin-bottom: 2.5rem;
+}
+
+.coursework-section {
+  background: rgba(255, 255, 255, 0.02);
+  padding: 2rem;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+}
+
+.coursework-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1.5rem;
+  color: var(--accent);
+}
+
+.coursework-header h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.coursework-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.course-tag {
+  padding: 0.6rem 1.4rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  color: white;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.course-tag:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(255, 78, 80, 0.3);
+}
+
+@media (max-width: 768px) {
+  .edu-card-header {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .edu-header-text h3 {
+    font-size: 1.5rem;
+  }
+  
+  .meta-row {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .education-card {
+    padding: 2rem;
+  }
+}
