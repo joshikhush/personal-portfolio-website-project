@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { GraduationCap, Calendar, BookOpen, MapPin } from 'lucide-react';
 import './Education.css';

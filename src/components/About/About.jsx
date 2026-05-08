@@ -1,17 +1,17 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import profileImg from '../../assets/profile.png';
 import { motion } from 'framer-motion';
 import './About.css';
 
 const About = () => {
-  const [displayText, setDisplayText] = React.useState('');
-  const [isDeleting, setIsDeleting] = React.useState(false);
-  const [loopNum, setLoopNum] = React.useState(0);
-  const [typingSpeed, setTypingSpeed] = React.useState(150);
+  const [displayText, setDisplayText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [loopNum, setLoopNum] = useState(0);
+  const [typingSpeed, setTypingSpeed] = useState(150);
 
   const roles = ['Full Stack Developer', 'Frontend Developer'];
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleTyping = () => {
       const i = loopNum % roles.length;
       const fullText = roles[i];
@@ -21,19 +21,19 @@ const About = () => {
         : fullText.substring(0, displayText.length + 1)
       );
 
-      setTypingSpeed(isDeleting ? 80 : 150);
-
       if (!isDeleting && displayText === fullText) {
-        setTimeout(() => setIsDeleting(true), 2000);
+        setTimeout(() => setIsDeleting(true), 1500);
       } else if (isDeleting && displayText === '') {
         setIsDeleting(false);
         setLoopNum(loopNum + 1);
       }
+
+      setTypingSpeed(isDeleting ? 75 : 150);
     };
 
     const timer = setTimeout(handleTyping, typingSpeed);
     return () => clearTimeout(timer);
-  }, [displayText, isDeleting, loopNum, typingSpeed]);
+  }, [displayText, isDeleting, loopNum, typingSpeed, roles]);
 
   const contactInfo = [
     { label: 'Name', value: 'Khushboo Joshi' },
@@ -66,13 +66,18 @@ const About = () => {
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.8 }}
             className="about-text"
           >
             <span className="badge">About Me</span>
-            <h2>I'm Khushboo Joshi, a <span className="typewriter-text">{displayText}<span className="cursor">|</span></span></h2>
+            <h2>
+              I am a <span className="typewriter-text">{displayText}</span>
+              <span className="cursor">|</span>
+            </h2>
             <p>
-              I am a passionate developer dedicated to creating intuitive and high-performance web applications. With a strong foundation in both frontend and backend technologies, I turn complex problems into simple, beautiful digital solutions.
+              Recent Computer Science graduate from JECRC University with a passion 
+              for building scalable web applications. Experienced in modern stacks 
+              like React, Node.js, and React Native through high-impact internships.
             </p>
 
             <div className="info-grid">

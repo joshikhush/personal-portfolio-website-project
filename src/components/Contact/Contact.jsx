@@ -1,6 +1,13 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, Code, User, Globe } from 'lucide-react';
+import { 
+  Globe, 
+  Mail, 
+  Code, 
+  User,
+  Phone, 
+  MapPin, 
+  Send
+} from 'lucide-react';
 import './Contact.css';
 
 const Contact = () => {
