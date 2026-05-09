@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Globe, 
   Mail, 
@@ -11,10 +12,48 @@ import {
 import './Contact.css';
 
 const Contact = () => {
-  const handleSubmit = (e) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', or null
+  const [showToast, setShowToast] = useState(false);
+
+  useEffect(() => {
+    if (showToast) {
+      const timer = setTimeout(() => setShowToast(false), 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [showToast]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Logic for form submission could go here (e.g., EmailJS or Formspree)
-    alert("Message sent! (Simulation)");
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    const formData = new FormData(e.target);
+    // This is your public access key from Web3Forms.
+    formData.append("access_key", "e27c88dd-e658-452f-b848-3470ac3cc531");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setSubmitStatus('success');
+        setShowToast(true);
+        e.target.reset();
+      } else {
+        setSubmitStatus('error');
+        setShowToast(true); // Show toast even for error
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -85,24 +124,68 @@ const Contact = () => {
           >
             <form onSubmit={handleSubmit} className="contact-form">
               <div className="form-group">
-                <input type="text" placeholder="Your Name" required />
+                <input type="text" name="name" placeholder="Your Name" required />
               </div>
               <div className="form-group">
-                <input type="email" placeholder="Your Email" required />
+                <input type="email" name="email" placeholder="Your Email" required />
               </div>
               <div className="form-group">
-                <input type="text" placeholder="Subject" required />
+                <input type="text" name="subject" placeholder="Subject" required />
               </div>
               <div className="form-group">
-                <textarea placeholder="Your Message" rows="5" required></textarea>
+                <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
               </div>
-              <button type="submit" className="btn-primary submit-btn">
-                <span>Send Message</span>
+              <button 
+                type="submit" 
+                className={`btn-primary submit-btn ${isSubmitting ? 'loading' : ''}`}
+                disabled={isSubmitting}
+              >
+                <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
                 <Send size={18} />
               </button>
+              
+              {submitStatus === 'success' && (
+                <p className="form-success">Message sent successfully! I will get back to you soon.</p>
+              )}
+              {submitStatus === 'error' && (
+                <p className="form-error">Something went wrong. Please try again later.</p>
+              )}
             </form>
           </motion.div>
         </div>
+
+        {/* Success/Error Toast Notification */}
+        <AnimatePresence>
+          {showToast && (
+            <motion.div
+              initial={{ opacity: 0, y: 50, scale: 0.3 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.2 } }}
+              className={`form-toast ${submitStatus}`}
+            >
+              <div className="toast-content">
+                {submitStatus === 'success' ? (
+                  <>
+                    <div className="toast-icon success">✓</div>
+                    <div className="toast-text">
+                      <h4>Success!</h4>
+                      <p>Your message has been sent successfully.</p>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="toast-icon error">✕</div>
+                    <div className="toast-text">
+                      <h4>Error</h4>
+                      <p>Something went wrong. Please try again.</p>
+                    </div>
+                  </>
+                )}
+                <button onClick={() => setShowToast(false)} className="toast-close">×</button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );

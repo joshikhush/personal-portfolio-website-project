@@ -71,7 +71,7 @@ const About = () => {
           >
             <span className="badge">About Me</span>
             <h2>
-              I am a <span className="typewriter-text">{displayText}</span>
+              Hey, I am a <span className="typewriter-text">{displayText}</span>
               <span className="cursor">|</span>
             </h2>
             <p>
