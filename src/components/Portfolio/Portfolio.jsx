@@ -10,7 +10,7 @@ const Portfolio = () => {
       category: 'Client Work',
       type: 'client',
       description: 'Framework-free, 17-page B2B site for a transformer-radiator manufacturer.',
-      image: '/images/projects/manufacturer-hero.webp',
+      image: '/images/projects/9c782c62-9648-4b1c-adc3-c59d8e88e9a6.png',
       tags: ['HTML', 'CSS', 'JavaScript', 'Node.js', 'Accessibility', 'Performance']
     },
     {
