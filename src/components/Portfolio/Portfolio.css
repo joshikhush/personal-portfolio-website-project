@@ -3,6 +3,21 @@
   background: #13131a;
 }
 
+.portfolio-section .section-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding-top: 1rem;
+  margin-bottom: 3.5rem;
+}
+
+.portfolio-section .section-header p {
+  max-width: 620px;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
 .portfolio-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -30,29 +45,6 @@
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.project-type {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  padding: 0.35rem 0.9rem;
-  border-radius: 50px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  border: 1px solid var(--accent);
-}
-
-.project-type-client {
-  background: var(--accent);
-  color: white;
-}
-
-.project-type-personal {
-  background: rgba(14, 14, 18, 0.8);
-  backdrop-filter: blur(5px);
-  color: var(--accent);
-}
-
 .project-hover {
   position: absolute;
   top: 0;
@@ -62,8 +54,11 @@
   background: rgba(14, 14, 18, 0.8);
   backdrop-filter: blur(5px);
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  align-content: center;
   justify-content: center;
+  gap: 0.8rem;
   opacity: 0;
   transition: var(--transition);
 }
@@ -80,6 +75,12 @@
   font-size: 0.9rem;
   transform: translateY(20px);
   transition: var(--transition);
+}
+
+.view-project-btn-outline {
+  background: rgba(14, 14, 18, 0.6);
+  border: 1px solid var(--accent);
+  color: var(--accent);
 }
 
 .project-card:hover .project-image img {
@@ -106,6 +107,20 @@
   letter-spacing: 1px;
 }
 
+.project-category-personal {
+  color: var(--text-secondary);
+}
+
+.project-note {
+  margin-left: 0.6rem;
+  padding: 0.15rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  font-size: 0.7rem;
+  letter-spacing: 0.5px;
+  color: var(--text-secondary);
+}
+
 .project-info h3 {
   font-size: 1.6rem;
   margin-top: 0.5rem;
@@ -118,6 +133,23 @@
   color: var(--text-secondary);
   font-size: 0.95rem;
   line-height: 1.6;
+}
+
+.project-bullets {
+  margin-top: 0.8rem;
+  padding-left: 1.1rem;
+  list-style: disc;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.project-bullets li + li {
+  margin-top: 0.35rem;
+}
+
+.project-bullets li::marker {
+  color: var(--accent);
 }
 
 @media (max-width: 768px) {
