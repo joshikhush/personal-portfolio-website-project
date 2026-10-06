@@ -5,6 +5,16 @@ import './Experience.css';
 const Experience = () => {
   const experiences = [
     {
+      role: 'Founder & Lead Developer',
+      company: 'Tresto',
+      description: [
+        'Delivered a bespoke 17-page corporate website for a transformer-radiator manufacturer, hand-coded in vanilla HTML/CSS/JS with zero frameworks and shipped via a multi-environment Git workflow.',
+        'Built a reusable nav/footer component system and data-driven sections, removing ~700 lines of duplicated markup and turning content updates into data edits.',
+        'Cut image payloads by up to ~95% (~11 MB → ~150 KB) and handled 30+ rounds of client feedback under live production conditions.'
+      ],
+      tech: ['HTML', 'CSS', 'JavaScript', 'Node.js']
+    },
+    {
       role: 'Full Stack Developer Intern',
       company: 'Solinix Software Solutions',
       location: 'Bangalore (Remote)',
@@ -66,10 +76,12 @@ const Experience = () => {
                     </div>
                     <div className="experience-meta">
                       <span className="company-name">{exp.company}</span>
-                      <div className="meta-info">
-                        <span><Calendar size={14} /> {exp.period}</span>
-                        <span><MapPin size={14} /> {exp.location}</span>
-                      </div>
+                      {(exp.period || exp.location) && (
+                        <div className="meta-info">
+                          {exp.period && <span><Calendar size={14} /> {exp.period}</span>}
+                          {exp.location && <span><MapPin size={14} /> {exp.location}</span>}
+                        </div>
+                      )}
                     </div>
                   </div>
                   

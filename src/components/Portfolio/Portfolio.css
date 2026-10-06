@@ -90,6 +90,13 @@
   font-weight: 700;
 }
 
+.project-desc {
+  margin-top: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
 @media (max-width: 768px) {
   .portfolio-grid {
     grid-template-columns: 1fr;

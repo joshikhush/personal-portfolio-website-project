@@ -5,6 +5,14 @@ import './Portfolio.css';
 const Portfolio = () => {
   const projects = [
     {
+      title: 'Industrial Manufacturer — Corporate Website',
+      slug: 'industrial-manufacturer-website',
+      category: 'Client Work',
+      description: 'Framework-free, 17-page B2B site for a transformer-radiator manufacturer.',
+      image: '/images/projects/manufacturer-hero.webp',
+      tags: ['HTML', 'CSS', 'JavaScript', 'Node.js', 'Accessibility', 'Performance']
+    },
+    {
       title: 'AI Assignment Generator',
       category: 'Full Stack',
       image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800',
@@ -91,16 +99,21 @@ const Portfolio = () => {
             >
               <div className="project-image">
                 <img src={project.image} alt={project.title} loading="lazy" />
-                <div className="project-hover">
-                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="view-project-btn">
-                    <ArrowUpRight size={20} />
-                    View GitHub
-                  </a>
-                </div>
+                {project.link && (
+                  <div className="project-hover">
+                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="view-project-btn">
+                      <ArrowUpRight size={20} />
+                      View GitHub
+                    </a>
+                  </div>
+                )}
               </div>
               <div className="project-info">
                 <span className="project-category">{project.category}</span>
                 <h3>{project.title}</h3>
+                {project.description && (
+                  <p className="project-desc">{project.description}</p>
+                )}
                 <div className="project-tags">
                   {project.tags.map((tag, i) => (
                     <span key={i} className="project-tag">{tag}</span>
