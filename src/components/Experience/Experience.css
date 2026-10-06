@@ -93,6 +93,14 @@
   font-weight: 600;
 }
 
+a.company-name {
+  align-self: flex-start;
+}
+
+a.company-name:hover {
+  color: var(--accent-hover);
+}
+
 .meta-info {
   display: flex;
   gap: 1.5rem;

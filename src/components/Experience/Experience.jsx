@@ -5,6 +5,20 @@ import './Experience.css';
 const Experience = () => {
   const experiences = [
     {
+      role: 'Full Stack Developer (Contract)',
+      company: 'Tresto.io',
+      companyUrl: 'https://tresto.io',
+      location: 'Remote',
+      period: 'Jun 2026 – Present',
+      description: [
+        "Built the company's marketing platform in Next.js and React, tuned for performance with SSR and fine-grained hydration boundaries.",
+        'Developed custom scroll-locked animations using raw DOM manipulation and requestAnimationFrame, holding a smooth 60 FPS.',
+        'Migrated the styling architecture to Tailwind CSS v4 with centralized theme tokens, which cut configuration overhead.',
+        'Designed interactive navigation with Framer Motion and custom cubic-bezier springs.'
+      ],
+      tech: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Vercel']
+    },
+    {
       role: 'Full Stack Developer Intern',
       company: 'Solinix Software Solutions',
       location: 'Bangalore (Remote)',
@@ -65,7 +79,11 @@ const Experience = () => {
                       <h3>{exp.role}</h3>
                     </div>
                     <div className="experience-meta">
-                      <span className="company-name">{exp.company}</span>
+                      {exp.companyUrl ? (
+                        <a href={exp.companyUrl} target="_blank" rel="noopener noreferrer" className="company-name">{exp.company}</a>
+                      ) : (
+                        <span className="company-name">{exp.company}</span>
+                      )}
                       {(exp.period || exp.location) && (
                         <div className="meta-info">
                           {exp.period && <span><Calendar size={14} /> {exp.period}</span>}

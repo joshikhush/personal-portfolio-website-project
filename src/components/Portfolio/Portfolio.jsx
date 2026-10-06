@@ -8,6 +8,7 @@ const Portfolio = () => {
       title: 'Industrial Manufacturer — Corporate Website',
       slug: 'industrial-manufacturer-website',
       category: 'Client Work',
+      type: 'client',
       description: 'Framework-free, 17-page B2B site for a transformer-radiator manufacturer.',
       image: '/images/projects/manufacturer-hero.webp',
       tags: ['HTML', 'CSS', 'JavaScript', 'Node.js', 'Accessibility', 'Performance']
@@ -15,6 +16,7 @@ const Portfolio = () => {
     {
       title: 'AI Assignment Generator',
       category: 'Full Stack',
+      type: 'personal',
       image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800',
       link: 'https://github.com/joshikhush/Ai-Assignment-Generator-',
       tags: ['TypeScript', 'Next.js', 'AI']
@@ -22,6 +24,7 @@ const Portfolio = () => {
     {
       title: 'Travel Booking Site',
       category: 'Web Design',
+      type: 'personal',
       image: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&q=80&w=800',
       link: 'https://github.com/joshikhush/Travel-website-page-',
       tags: ['React', 'Tailwind', 'Vite']
@@ -29,6 +32,7 @@ const Portfolio = () => {
     {
       title: 'Food Delivery App',
       category: 'Frontend',
+      type: 'personal',
       image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&q=80&w=800',
       link: 'https://github.com/joshikhush/food-delivery-app',
       tags: ['JavaScript', 'React', 'UI/UX']
@@ -36,6 +40,7 @@ const Portfolio = () => {
     {
       title: 'Bill Manager',
       category: 'Utility',
+      type: 'personal',
       image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=800',
       link: 'https://github.com/joshikhush/Bill-Manager-',
       tags: ['JavaScript', 'Local Storage']
@@ -43,6 +48,7 @@ const Portfolio = () => {
     {
       title: 'Spotify Clone',
       category: 'Multimedia',
+      type: 'personal',
       image: 'https://images.unsplash.com/photo-1614680376593-902f74cf0d41?auto=format&fit=crop&q=80&w=800',
       link: 'https://github.com/joshikhush/spotify',
       tags: ['HTML', 'CSS', 'JavaScript']
@@ -50,6 +56,7 @@ const Portfolio = () => {
     {
       title: 'Amazon Clone',
       category: 'E-commerce',
+      type: 'personal',
       image: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&q=80&w=800',
       link: 'https://github.com/joshikhush/project-3',
       tags: ['HTML', 'CSS', 'Grid']
@@ -57,6 +64,7 @@ const Portfolio = () => {
     {
       title: 'Global News App',
       category: 'Frontend',
+      type: 'personal',
       image: 'https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&q=80&w=800',
       link: 'https://github.com/joshikhush/Newsapp',
       tags: ['React', 'NewsAPI', 'Axios']
@@ -64,6 +72,7 @@ const Portfolio = () => {
     {
       title: 'Pizza Website',
       category: 'Web Design',
+      type: 'personal',
       image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=800',
       link: 'https://github.com/joshikhush/project2',
       tags: ['HTML', 'CSS', 'Responsive']
@@ -99,6 +108,9 @@ const Portfolio = () => {
             >
               <div className="project-image">
                 <img src={project.image} alt={project.title} loading="lazy" />
+                <span className={`project-type project-type-${project.type}`}>
+                  {project.type === 'client' ? 'Client Project' : 'Personal Project'}
+                </span>
                 {project.link && (
                   <div className="project-hover">
                     <a href={project.link} target="_blank" rel="noopener noreferrer" className="view-project-btn">
